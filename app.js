@@ -22,7 +22,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.get('/', function (req, res) {
-  res.render('home', { startingContent: homeStartingContent, newPost: posts })
+  const kebabCase = _.kebabCase
+
+  res.render('home', {
+    startingContent: homeStartingContent,
+    newPost: posts,
+    kebabCase: kebabCase,
+  })
 })
 
 app.get('/about', function (req, res) {

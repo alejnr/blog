@@ -3,11 +3,13 @@
 <p><%= startingContent %></p>
 
 <% for( let i = 0; i < newPost.length; i++ ) { %>
-<a style="text-decoration: none" href="/posts/<%= newPost [i].title %>"
+<a
+  style="text-decoration: none"
+  href="/posts/<%= kebabCase(newPost [i].title) %>"
   ><h1><%= newPost [i].title %></h1></a
 >
 <p>
   <%= newPost [i].content.substring(0, 150) + '...' %>
-  <a href="/posts/<%= newPost [i].title %>">Read More</a>
+  <a href="/posts/<%= kebabCase(newPost [i].title) %>">Read More</a>
 </p>
 <% } %> <%- include('partials/footer') -%>
