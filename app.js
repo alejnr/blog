@@ -44,9 +44,7 @@ app.get('/posts/:postName', function (req, res) {
     const storedTitle = _.lowerCase(post.title)
 
     if (storedTitle === requestedTitle) {
-      console.log('Match Found!')
-    } else {
-      console.log('404 Page not found!')
+      res.render('post', { requestedPost: post })
     }
   })
 })
