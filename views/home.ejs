@@ -3,7 +3,9 @@
 <p><%= startingContent %></p>
 
 <% for( let i = 0; i < newPost.length; i++ ) { %>
-<h1><%= newPost [i].title %></h1>
+<a style="text-decoration: none" href="/posts/<%= newPost [i].title %>"
+  ><h1><%= newPost [i].title %></h1></a
+>
 <p>
   <%= newPost [i].content.substring(0, 150) + '...' %>
   <a href="/posts/<%= newPost [i].title %>">Read More</a>
