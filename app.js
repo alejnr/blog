@@ -100,10 +100,18 @@ app.get('/posts/:postId', function (req, res) {
   const requestedId = req.params.postId
 
   Post.findOne({_id: requestedId}, function (err, foundPost) {
+    
+    if (foundPost) {
 
-    res.render('post', { requestedPost: foundPost })
+      res.render('post', { requestedPost: foundPost })
+    } else {
+
+      res.redirect('/')
+    }
+
     
   })
+
 
   
 })
