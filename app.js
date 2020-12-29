@@ -96,16 +96,16 @@ app.get('/compose', function (req, res) {
   res.render('compose')
 })
 
-app.get('/posts/:postName', function (req, res) {
-  const requestedTitle = _.lowerCase(req.params.postName)
+app.get('/posts/:postId', function (req, res) {
+  const requestedId = req.params.postId
 
-  posts.forEach(function (post) {
-    const storedTitle = _.lowerCase(post.title)
+  Post.findOne({_id: requestedId}, function (err, foundPost) {
 
-    if (storedTitle === requestedTitle) {
-      res.render('post', { requestedPost: post })
-    }
+    res.render('post', { requestedPost: foundPost })
+    
   })
+
+  
 })
 
 app.post('/compose', function (req, res) {

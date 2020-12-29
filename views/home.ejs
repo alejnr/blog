@@ -5,11 +5,11 @@
 <% for( let i = 0; i < newPost.length; i++ ) { %>
 <a
   style="text-decoration: none"
-  href="/posts/<%= kebabCase(newPost [i].title) %>"
+  href="/posts/<%= newPost [i]._id %>"
   ><h1><%= newPost [i].title %></h1></a
 >
 <p>
   <%= newPost [i].content.substring(0, 150) + '...' %>
-  <a href="/posts/<%= kebabCase(newPost [i].title) %>">Read More</a>
+  <a href="/posts/<%= newPost [i]._id %>">Read More</a>
 </p>
 <% } %> <%- include('partials/footer') -%>
