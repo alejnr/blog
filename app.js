@@ -102,17 +102,11 @@ app.get('/posts/:postId', function (req, res) {
   Post.findOne({_id: requestedId}, function (err, foundPost) {
     
     if (foundPost) {
-
       res.render('post', { requestedPost: foundPost })
     } else {
-
       res.redirect('/')
     }
-
-    
   })
-
-
   
 })
 
@@ -127,9 +121,12 @@ app.post('/compose', function (req, res) {
     content: post.content
   })
 
-  newPost.save()
+  newPost.save(function(err){
+    if (!err){
+      res.redirect("/");
+    }
+  })
 
-  res.redirect('/')
 })
 
 app.use(function (req, res) {
